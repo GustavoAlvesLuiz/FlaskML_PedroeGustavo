@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classificador de Animais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Classificador de Animais</h1>
+
+    <form action="{{ url_for('predict') }}" method="post" class="form-container">
+      <div class="column">
+        <div class="form-group">
+          <label for="pelos">O animal tem pelos?</label>
+          <div class="options">
+            <input type="radio" name="pelos" value="1" id="pelos_sim" required><label for="pelos_sim">Sim</label>
+            <input type="radio" name="pelos" value="0" id="pelos_nao" required><label for="pelos_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="penas">O animal tem penas?</label>
+          <div class="options">
+            <input type="radio" name="penas" value="1" id="penas_sim" required><label for="penas_sim">Sim</label>
+            <input type="radio" name="penas" value="0" id="penas_nao" required><label for="penas_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="oviparo">O animal é ovíparo?</label>
+          <div class="options">
+            <input type="radio" name="oviparo" value="1" id="oviparo_sim" required><label for="oviparo_sim">Sim</label>
+            <input type="radio" name="oviparo" value="0" id="oviparo_nao" required><label for="oviparo_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="voador">O animal é voador?</label>
+          <div class="options">
+            <input type="radio" name="voador" value="1" id="voador_sim" required><label for="voador_sim">Sim</label>
+            <input type="radio" name="voador" value="0" id="voador_nao" required><label for="voador_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aquatico">O animal é aquático?</label>
+          <div class="options">
+            <input type="radio" name="aquatico" value="1" id="aquatico_sim" required><label for="aquatico_sim">Sim</label>
+            <input type="radio" name="aquatico" value="0" id="aquatico_nao" required><label for="aquatico_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="predador">O animal é predador?</label>
+          <div class="options">
+            <input type="radio" name="predador" value="1" id="predador_sim" required><label for="predador_sim">Sim</label>
+            <input type="radio" name="predador" value="0" id="predador_nao" required><label for="predador_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="com_dentes">O animal tem dentes?</label>
+          <div class="options">
+            <input type="radio" name="com_dentes" value="1" id="com_dentes_sim" required><label for="com_dentes_sim">Sim</label>
+            <input type="radio" name="com_dentes" value="0" id="com_dentes_nao" required><label for="com_dentes_nao">Não</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="form-group">
+          <label for="coluna_vertebral">O animal tem coluna vertebral?</label>
+          <div class="options">
+            <input type="radio" name="coluna_vertebral" value="1" id="coluna_vertebral_sim" required><label for="coluna_vertebral_sim">Sim</label>
+            <input type="radio" name="coluna_vertebral" value="0" id="coluna_vertebral_nao" required><label for="coluna_vertebral_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="respira">O animal tem respiração pulmonar?</label>
+          <div class="options">
+            <input type="radio" name="respira" value="1" id="respira_sim" required><label for="respira_sim">Sim</label>
+            <input type="radio" name="respira" value="0" id="respira_nao" required><label for="respira_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="venenoso">O animal é venenoso?</label>
+          <div class="options">
+            <input type="radio" name="venenoso" value="1" id="venenoso_sim" required><label for="venenoso_sim">Sim</label>
+            <input type="radio" name="venenoso" value="0" id="venenoso_nao" required><label for="venenoso_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="barbatanas">O animal tem barbatanas?</label>
+          <div class="options">
+            <input type="radio" name="barbatanas" value="1" id="barbatanas_sim" required><label for="barbatanas_sim">Sim</label>
+            <input type="radio" name="barbatanas" value="0" id="barbatanas_nao" required><label for="barbatanas_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pernas">Quantas pernas o animal tem?</label>
+          <input type="number" name="pernas" id="pernas" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cauda">O animal tem cauda?</label>
+          <div class="options">
+            <input type="radio" name="cauda" value="1" id="cauda_sim" required><label for="cauda_sim">Sim</label>
+            <input type="radio" name="cauda" value="0" id="cauda_nao" required><label for="cauda_nao">Não</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="domestico">O animal é doméstico?</label>
+          <div class="options">
+            <input type="radio" name="domestico" value="1" id="domestico_sim" required><label for="domestico_sim">Sim</label>
+            <input type="radio" name="domestico" value="0" id="domestico_nao" required><label for="domestico_nao">Não</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Classificar Animal</button>
+    </form>
+
+    <div class="result">
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+</html>
